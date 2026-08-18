@@ -83,6 +83,7 @@ $autoload['libraries'] = array();
 |	$autoload['helpers'] = array('url', 'file');
 */
 $autoload['helpers'] = array('url');
+$autoload['configs'] = array('middleware');
 
 /*
 | -------------------------------------------------------------------

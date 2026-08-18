@@ -1,41 +1,46 @@
 <?php
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
-class StudentController extends Controller 
-{
-    public function index() 
-    {
+class StudentController extends Controller {
+
+    public function index() {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
         $data = [
-            'page_title' => 'Student Information',
-            'student'    => [
-                'id'      => '2024-00208',
-                'name'    => 'Micaella Jayne D. Ramos',
-                'course'  => 'BS Information Technology',
-                'year'    => '3rd Year',
-                'section' => 'F5',
-                'email'   => 'ramosmicaella22@gmail.com'
-            ]
+            'student_id' => 'MCC2024-00208',
+            'name'       => 'Micaella Jayne Ramos',
+            'course'     => 'BSIT',
+            'year'       => '3rd Year College',
+            'section'    => 'F5',
+            'email'      => 'ramosmicaella22@gmail.com'
         ];
 
-        // Renders app/views/student/index.php
-        $this->call->view('student/index', $data);
+        $this->call->view('student', $data);
     }
 
-    public function profile() 
-    {
+    public function profile() {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
         $data = [
-            'page_title' => 'Student Profile',
-            'student'    => [
-                'id'      => '2024-00208',
-                'name'    => 'MIcaella Jayne D. Ramos',
-                'course'  => 'BS Information Technology',
-                'year'    => '3rd Year',
-                'section' => 'F5',
-                'email'   => 'ramosmicaella22@gmail.com'
-            ]
+            'student_id'  => 'MCC2024-00208',
+            'name'        => 'Micaella Jayne Ramos',
+            'course'      => 'BSIT',
+            'year'        => '3rd Year College',
+            'section'     => 'F5',
+            'email'       => 'ramosmicaella22@gmail.com',
+            'sex'         => 'Female',
+            'birthday'    => 'July 22, 2006',
+            'age'         => '19 years old',
+            'contact'     => '09944660256',
+            'address'     => 'Calapan City, Oriental Mindoro',
+            'elementary'  => 'Sta. Isabel Elementary School',
+            'highschool'  => 'Jose D. Udasco Mangangan 1 National High School',
         ];
 
-        // Renders app/views/student/profile.php
-        $this->call->view('student/profile', $data);
+        $this->call->view('student_profile', $data);
     }
 }
